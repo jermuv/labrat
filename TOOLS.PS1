@@ -11,11 +11,22 @@
 Add-WindowsCapability -Online -Name Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0
 Add-WindowsCapability -Online -Name Rsat.GroupPolicy.Management.Tools~~~~0.0.1.0
 
+#########################
+### region downloads ####
+
 # wsus cab file:
 # 
 http://go.microsoft.com/fwlink/?linkid=74689
 
-Start-BitsTransfer -Source http://go.microsoft.com/fwlink/?linkid=74689 -Destination "c:\demo.zip"
+Start-BitsTransfer -Source http://go.microsoft.com/fwlink/?linkid=74689 -Destination "c:\wsusscn2.cab"
+
+# edge offline install
+start-bitstransfer -source http://go.microsoft.com/fwlink/?LinkID=2093437 -Destination "C:\VM\SANDBOX\INBOX\MicrosoftEdgeEnterpriseX64.msi"
+
+#########################
+### /end of region downloads ####
+
+
 
 # ad
 # https://docs.microsoft.com/en-us/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps
