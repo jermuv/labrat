@@ -37,6 +37,7 @@ start-bitstransfer -source https://go.microsoft.com/fwlink/?LinkId=828603 -Desti
 start-bitstransfer -source https://go.microsoft.com/fwlink/?LinkId=2116849 -Destination "c:\temp\GatewayInstall.exe"
 
 start-bitstransfer -source https://go.microsoft.com/fwlink/?LinkId=2085155 -Destination "c:\temp\netframework.exe"
+start-bitstransfer -source https://go.microsoft.com/fwlink/?linkid=2088631 -Destination "c:\temp\netframework_4.8_offlineinstaller.exe"
 
 # powerbi desktop
 # https://aka.ms/pbiSingleInstaller
