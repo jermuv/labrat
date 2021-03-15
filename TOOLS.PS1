@@ -47,7 +47,8 @@ start-bitstransfer -source https://download.microsoft.com/download/8/8/0/880BCA7
 #########################
 ### /end of region downloads ####
 
-
+## misc
+## Get-ScheduledTask | Get-ScheduledTaskInfo
 
 # ad
 # https://docs.microsoft.com/en-us/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps
