@@ -30,6 +30,20 @@ start-bitstransfer -source http://go.microsoft.com/fwlink/?LinkID=2093437 -Desti
 start-bitstransfer -source https://go.microsoft.com/fwlink/?LinkId=828603 -Destination "c:\temp\MMASetup-AMD64.exe"
 ### https://docs.microsoft.com/en-us/azure/azure-monitor/agents/agent-windows
 
+
+#region laps
+#Download files
+    #download LAPS install file x64
+    Start-BitsTransfer -Source https://download.microsoft.com/download/C/7/A/C7AAD914-A8A6-4904-88A1-29E657445D03/LAPS.x64.msi -Destination "$env:UserProfile\Downloads\LAPS.x64.msi"
+
+    #optional: download documentation
+    "LAPS_TechnicalSpecification.docx","LAPS_OperationsGuide.docx" | ForEach-Object {
+        Start-BitsTransfer -Source "https://download.microsoft.com/download/C/7/A/C7AAD914-A8A6-4904-88A1-29E657445D03/$_" -Destination "$env:UserProfile\Downloads\$_"
+    }
+ 
+
+#endregion laps
+
 # misc download
 #endregion
 
