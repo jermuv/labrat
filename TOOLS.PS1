@@ -1,4 +1,5 @@
 #region azure related stuff
+
 # connect azure AD
 Connect-AzureAD -TenantId <tenant id here>
 
@@ -17,11 +18,7 @@ Connect-AzureAD -TenantId <tenant id here>
 Add-WindowsCapability -Online -Name Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0
 Add-WindowsCapability -Online -Name Rsat.GroupPolicy.Management.Tools~~~~0.0.1.0
 
-#########################
-### region downloads ####
-
 # wsus cab file:
-# 
 http://go.microsoft.com/fwlink/?linkid=74689
 
 Start-BitsTransfer -Source http://go.microsoft.com/fwlink/?linkid=74689 -Destination "c:\wsusscn2.cab"
