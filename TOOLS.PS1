@@ -1,3 +1,5 @@
+Start-BitsTransfer -Source https://raw.githubusercontent.com/jermuv/labrat/master/TOOLS.PS1 -Destination "c:\temp\TOOLS.PS1"
+
 #region azure related stuff
 
 # connect azure AD
