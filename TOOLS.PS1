@@ -43,6 +43,20 @@ start-bitstransfer -source https://go.microsoft.com/fwlink/?LinkId=828603 -Desti
         Start-BitsTransfer -Source "https://download.microsoft.com/download/C/7/A/C7AAD914-A8A6-4904-88A1-29E657445D03/$_" -Destination "$env:UserProfile\Downloads\$_"
     }
  
+ #region schema stuff
+ Import-module AdmPwd.PS
+ Update-AdmPwdADSchema
+ #endregion laps schema
+
+#region laps groups
+$OUpath = "ou=t2, OU=admin, dc=jevirtan1,dc=lab"
+New-ADGroup -Name LAPS_Readers -GroupScope Global -Path $OUPath
+New-ADGroup -Name LAPS_Resetters -GroupScope Global -Path $OUPath
+#endregion laps groups
+
+#region blank gpo
+New-Gpo -Name 'LAPS' | New-GPLink -Target $OUPath
+#endregion blank gpo
 
 #endregion laps
 
