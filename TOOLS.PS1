@@ -1,21 +1,26 @@
+Start-BitsTransfer -Source https://raw.githubusercontent.com/jermuv/labrat/master/TOOLS.PS1 -Destination "c:\temp\TOOLS.PS1"
 
-### tools
+#region azure related stuff
 
+# connect azure AD
+Connect-AzureAD -TenantId <tenant id here>
+
+#endregion
+
+#region onprem tools
+
+#region misc download
 # Install-Module -Name PowerShellGet -Force
 
 # download latest offline version of edge
 # https://www.microsoft.com/fi-fi/edge/business/download
 
 # http://woshub.com/install-rsat-feature-windows-10-powershell/
-#region for the management tools
+
 Add-WindowsCapability -Online -Name Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0
 Add-WindowsCapability -Online -Name Rsat.GroupPolicy.Management.Tools~~~~0.0.1.0
 
-#########################
-### region downloads ####
-
 # wsus cab file:
-# 
 http://go.microsoft.com/fwlink/?linkid=74689
 
 Start-BitsTransfer -Source http://go.microsoft.com/fwlink/?linkid=74689 -Destination "c:\wsusscn2.cab"
@@ -28,7 +33,42 @@ start-bitstransfer -source https://go.microsoft.com/fwlink/?LinkId=828603 -Desti
 ### https://docs.microsoft.com/en-us/azure/azure-monitor/agents/agent-windows
 #endregion
 
+<<<<<<< HEAD
 #region vast related stuff
+=======
+
+#region laps
+#Download files
+    #download LAPS install file x64
+    Start-BitsTransfer -Source https://download.microsoft.com/download/C/7/A/C7AAD914-A8A6-4904-88A1-29E657445D03/LAPS.x64.msi -Destination "$env:UserProfile\Downloads\LAPS.x64.msi"
+
+    #optional: download documentation
+    "LAPS_TechnicalSpecification.docx","LAPS_OperationsGuide.docx" | ForEach-Object {
+        Start-BitsTransfer -Source "https://download.microsoft.com/download/C/7/A/C7AAD914-A8A6-4904-88A1-29E657445D03/$_" -Destination "$env:UserProfile\Downloads\$_"
+    }
+ 
+ #region schema stuff
+ Import-module AdmPwd.PS
+ Update-AdmPwdADSchema
+ #endregion laps schema
+
+#region laps groups
+$OUpath = "ou=t2, OU=admin, dc=jevirtan1,dc=lab"
+New-ADGroup -Name LAPS_Readers -GroupScope Global -Path $OUPath
+New-ADGroup -Name LAPS_Resetters -GroupScope Global -Path $OUPath
+#endregion laps groups
+
+#region blank gpo
+New-Gpo -Name 'LAPS' | New-GPLink -Target $OUPath
+#endregion blank gpo
+
+#endregion laps
+
+# misc download
+#endregion
+
+#region vast related
+>>>>>>> 5204ffb0e69e0061c9e8b396329f73c651c50a9c
 #Reg Add HKLM\SYSTEM\CurrentControlSet\Services\NTDS\Diagnostics /v "16 LDAP Interface Events" /t REG_DWORD /d 2
 #reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL" /v "EventLogging" /t REG_DWORD /d 7 /f
 #set-SmbServerConfiguration –AuditSmb1Access $true
@@ -42,11 +82,22 @@ start-bitstransfer -source https://go.microsoft.com/fwlink/?linkid=2088631 -Dest
 # https://aka.ms/pbiSingleInstaller
 ###start-bitstransfer -source https://www.microsoft.com/en-us/download/confirmation.aspx?id=58494 -Destination "c:\temp\PBIDesktopSetup_x64.exe"
 start-bitstransfer -source https://download.microsoft.com/download/8/8/0/880BCA75-79DD-466A-927D-1ABF1F5454B0/PBIDesktopSetup_x64.exe -Destination "c:\temp\PBIDesktopSetup_x64.exe"
+<<<<<<< HEAD
+#endregion
+=======
+
+# vast related
 #endregion
 
-## misc
+#region scheduled tasks stuff
+>>>>>>> 5204ffb0e69e0061c9e8b396329f73c651c50a9c
+
 ## Get-ScheduledTask | Get-ScheduledTaskInfo
 
+# scheduled tasks
+#endregion
+
+#region AD onprem stuff
 # ad
 # https://docs.microsoft.com/en-us/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps
 # new-adorganizationalunit
@@ -56,7 +107,13 @@ start-bitstransfer -source https://download.microsoft.com/download/8/8/0/880BCA7
 # new-adorganizationalunit T1 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
 # new-adorganizationalunit T2 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
 
-#region for the OU structures
+# ad onprem stuff
+#endregion
+
+# onprem
+#endregion
+
+#region AD content
 {
 new-adorganizationalunit Admin
 new-adorganizationalunit Devices
@@ -67,4 +124,8 @@ new-adorganizationalunit T0 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
 new-adorganizationalunit T1 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
 new-adorganizationalunit T2 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
 }
+<<<<<<< HEAD
+=======
+# AD content
+>>>>>>> 5204ffb0e69e0061c9e8b396329f73c651c50a9c
 #endregion
