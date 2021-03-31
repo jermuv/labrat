@@ -22,14 +22,13 @@ Start-BitsTransfer -Source http://go.microsoft.com/fwlink/?linkid=74689 -Destina
 
 # edge offline install
 start-bitstransfer -source http://go.microsoft.com/fwlink/?LinkID=2093437 -Destination "C:\temp\MicrosoftEdgeEnterpriseX64.msi"
-
+#region mma
 # mma agent download
 start-bitstransfer -source https://go.microsoft.com/fwlink/?LinkId=828603 -Destination "c:\temp\MMASetup-AMD64.exe"
 ### https://docs.microsoft.com/en-us/azure/azure-monitor/agents/agent-windows
+#endregion
 
-
-#
-# vast related
+#region vast related stuff
 #Reg Add HKLM\SYSTEM\CurrentControlSet\Services\NTDS\Diagnostics /v "16 LDAP Interface Events" /t REG_DWORD /d 2
 #reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL" /v "EventLogging" /t REG_DWORD /d 7 /f
 #set-SmbServerConfiguration –AuditSmb1Access $true
@@ -43,9 +42,7 @@ start-bitstransfer -source https://go.microsoft.com/fwlink/?linkid=2088631 -Dest
 # https://aka.ms/pbiSingleInstaller
 ###start-bitstransfer -source https://www.microsoft.com/en-us/download/confirmation.aspx?id=58494 -Destination "c:\temp\PBIDesktopSetup_x64.exe"
 start-bitstransfer -source https://download.microsoft.com/download/8/8/0/880BCA75-79DD-466A-927D-1ABF1F5454B0/PBIDesktopSetup_x64.exe -Destination "c:\temp\PBIDesktopSetup_x64.exe"
-
-#########################
-### /end of region downloads ####
+#endregion
 
 ## misc
 ## Get-ScheduledTask | Get-ScheduledTaskInfo
@@ -70,3 +67,4 @@ new-adorganizationalunit T0 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
 new-adorganizationalunit T1 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
 new-adorganizationalunit T2 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
 }
+#endregion
