@@ -33,9 +33,7 @@ start-bitstransfer -source https://go.microsoft.com/fwlink/?LinkId=828603 -Desti
 ### https://docs.microsoft.com/en-us/azure/azure-monitor/agents/agent-windows
 #endregion
 
-<<<<<<< HEAD
 #region vast related stuff
-=======
 
 #region laps
 #Download files
@@ -68,7 +66,6 @@ New-Gpo -Name 'LAPS' | New-GPLink -Target $OUPath
 #endregion
 
 #region vast related
->>>>>>> 5204ffb0e69e0061c9e8b396329f73c651c50a9c
 #Reg Add HKLM\SYSTEM\CurrentControlSet\Services\NTDS\Diagnostics /v "16 LDAP Interface Events" /t REG_DWORD /d 2
 #reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL" /v "EventLogging" /t REG_DWORD /d 7 /f
 #set-SmbServerConfiguration –AuditSmb1Access $true
@@ -82,15 +79,12 @@ start-bitstransfer -source https://go.microsoft.com/fwlink/?linkid=2088631 -Dest
 # https://aka.ms/pbiSingleInstaller
 ###start-bitstransfer -source https://www.microsoft.com/en-us/download/confirmation.aspx?id=58494 -Destination "c:\temp\PBIDesktopSetup_x64.exe"
 start-bitstransfer -source https://download.microsoft.com/download/8/8/0/880BCA75-79DD-466A-927D-1ABF1F5454B0/PBIDesktopSetup_x64.exe -Destination "c:\temp\PBIDesktopSetup_x64.exe"
-<<<<<<< HEAD
 #endregion
-=======
 
 # vast related
 #endregion
 
 #region scheduled tasks stuff
->>>>>>> 5204ffb0e69e0061c9e8b396329f73c651c50a9c
 
 ## Get-ScheduledTask | Get-ScheduledTaskInfo
 
@@ -124,8 +118,5 @@ new-adorganizationalunit T0 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
 new-adorganizationalunit T1 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
 new-adorganizationalunit T2 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
 }
-<<<<<<< HEAD
-=======
 # AD content
->>>>>>> 5204ffb0e69e0061c9e8b396329f73c651c50a9c
 #endregion
