@@ -12,3 +12,5 @@ write-output "eheiiii"
 #region demo2
 write-output "demo2 area"
 #endregion demo2
+
+Get-AzResource
