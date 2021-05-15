@@ -1,3 +1,8 @@
+#region download latest azure powershell module
+
+# endregion download azure powershell
+
+
 #region demo1
 write-output "demo"
 
