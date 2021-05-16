@@ -120,3 +120,75 @@ new-adorganizationalunit T2 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
 }
 # AD content
 #endregion
+
+
+#region misc
+
+Add-WindowsFeature AD-Domain-Services
+Add-WindowsFeature RSAT-ADDS
+
+##
+#
+# Windows PowerShell script for AD DS Deployment
+#
+
+Import-Module ADDSDeployment
+Install-ADDSDomainController `
+-NoGlobalCatalog:$false `
+-CreateDnsDelegation:$false `
+-CriticalReplicationOnly:$false `
+-DatabasePath "C:\Windows\NTDS" `
+-DomainName "Corp.contoso.com" `
+-InstallDns:$true `
+-LogPath "C:\Windows\NTDS" `
+-NoRebootOnCompletion:$false `
+-SiteName "Default-First-Site-Name" `
+-SysvolPath "C:\Windows\SYSVOL" `
+-Force:$true
+
+
+
+##
+
+#endregion misc
+
+
+#region iis server
+Install-WindowsFeature -name Web-Server -IncludeManagementTools
+#endregion iis server
+
+
+#region files server
+
+#region sharing a folder
+$folder_sharing = "c:\fileshare"
+if (!(Test-Path $folder_sharing)) {
+    md $folder_sharing
+}
+New-SmbShare –Name share –Path $folder_sharing –FullAccess 'authenticated users' -description 'fileshare'
+#endregion sharing a folder
+
+#region essential tools to shared
+$edge_offline = "\\files\share\Edge"
+if (!(test-path $edge_offline)) {
+    md $edge_offline
+}
+start-bitstransfer -source http://go.microsoft.com/fwlink/?LinkID=2093437 -Destination "$edge_offline\MicrosoftEdgeEnterpriseX64.msi"
+
+$mma_offline = "\\files\share\mma"
+if (!(test-path $mma_offline)) {
+    md $mma_offline
+}
+start-bitstransfer -source https://go.microsoft.com/fwlink/?LinkId=828603 -Destination "$mma_offline\MMASetup-AMD64.exe"
+
+$laps_offline = "\\files\share\laps"
+if (!(test-path $laps_offline)) {
+    md $laps_offline
+}
+Start-BitsTransfer -Source https://download.microsoft.com/download/C/7/A/C7AAD914-A8A6-4904-88A1-29E657445D03/LAPS.x64.msi -Destination "$laps_offline\LAPS.x64.msi"
+
+#endregion
+
+
+
+#endregion files server
