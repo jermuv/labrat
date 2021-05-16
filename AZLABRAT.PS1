@@ -14,3 +14,6 @@ write-output "demo2 area"
 #endregion demo2
 
 Get-AzResource
+
+# final 3.06
+Get-AzRoleDefinition
