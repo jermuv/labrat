@@ -3,7 +3,7 @@ Start-BitsTransfer -Source https://raw.githubusercontent.com/jermuv/labrat/maste
 #region azure related stuff
 
 # connect azure AD
-Connect-AzureAD -TenantId <tenant id here>
+Connect-AzureAD -TenantId tenant id here
 
 #endregion
 
