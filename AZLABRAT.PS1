@@ -17,3 +17,7 @@ Get-AzResource
 
 # final 3.06
 Get-AzRoleDefinition
+
+# vielä vika 3.07
+Get-AzResourceGroup | Format-Table
+Get-AzStorageAccount
