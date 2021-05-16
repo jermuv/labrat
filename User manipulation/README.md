@@ -5,7 +5,7 @@ Eka README tiedosto
 - script to create input file for a script that will create users
 - script to create users (ad, aad)
 
-# Historia
+# History
 ## 2021-05-16
 - Initial version
 - updated few links
