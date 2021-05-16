@@ -2,6 +2,7 @@ Eka README tiedosto
 
 # todo
 - lists of names (firstname,lastname)
+- script to create input file for a script that will create users
 - script to create users (ad, aad)
 
 # Historia
