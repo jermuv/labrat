@@ -1,12 +1,19 @@
 Eka README tiedosto
 
 # todo
-- list of user (csv)
+- lists of names (firstname,lastname)
 - script to create users (ad, aad)
 
 # Historia
 ## 2021-05-16
-eka versio
+- Initial version
+- updated few links
+- generated fin-lastnames.txt
+
+# Links
+
+- [First names Finnish](http://www.studentsoftheworld.info/penpals/stats.php?Pays=FIN)
+- [Lastnames Finnish](https://www.familyeducation.com/baby-names/browse-origin/surname/finnish)
 
 
 
