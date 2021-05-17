@@ -3,7 +3,7 @@ Start-BitsTransfer -Source https://raw.githubusercontent.com/jermuv/labrat/maste
 #region azure related stuff
 
 # connect azure AD
-Connect-AzureAD -TenantId <tenant id here>
+Connect-AzureAD -TenantId tenant id here
 
 #endregion
 
@@ -30,11 +30,13 @@ Start-BitsTransfer -Source https://go.microsoft.com/fwlink/?linkid=2088631 -Dest
 
 # edge offline install
 start-bitstransfer -source http://go.microsoft.com/fwlink/?LinkID=2093437 -Destination "C:\temp\MicrosoftEdgeEnterpriseX64.msi"
-
+#region mma
 # mma agent download
 start-bitstransfer -source https://go.microsoft.com/fwlink/?LinkId=828603 -Destination "c:\temp\MMASetup-AMD64.exe"
 ### https://docs.microsoft.com/en-us/azure/azure-monitor/agents/agent-windows
+#endregion
 
+#region vast related stuff
 
 #region laps
 #Download files
@@ -80,6 +82,7 @@ start-bitstransfer -source https://go.microsoft.com/fwlink/?linkid=2088631 -Dest
 # https://aka.ms/pbiSingleInstaller
 ###start-bitstransfer -source https://www.microsoft.com/en-us/download/confirmation.aspx?id=58494 -Destination "c:\temp\PBIDesktopSetup_x64.exe"
 start-bitstransfer -source https://download.microsoft.com/download/8/8/0/880BCA75-79DD-466A-927D-1ABF1F5454B0/PBIDesktopSetup_x64.exe -Destination "c:\temp\PBIDesktopSetup_x64.exe"
+#endregion
 
 # vast related
 #endregion
