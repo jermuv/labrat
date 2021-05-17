@@ -25,6 +25,9 @@ http://go.microsoft.com/fwlink/?linkid=74689
 
 Start-BitsTransfer -Source http://go.microsoft.com/fwlink/?linkid=74689 -Destination "c:\wsusscn2.cab"
 
+# dotnet download
+Start-BitsTransfer -Source https://go.microsoft.com/fwlink/?linkid=2088631 -Destination "c:\temp\netframework48_offline.exe"
+
 # edge offline install
 start-bitstransfer -source http://go.microsoft.com/fwlink/?LinkID=2093437 -Destination "C:\temp\MicrosoftEdgeEnterpriseX64.msi"
 
@@ -116,4 +119,20 @@ new-adorganizationalunit T1 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
 new-adorganizationalunit T2 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
 }
 # AD content
+#endregion
+
+#region levyn täyttämistä
+$destination = "C:\TEMP"
+md $destination
+#region download rubbish
+start-bitstransfer -source https://go.microsoft.com/fwlink/?LinkId=2116849 -Destination "$destination\GatewayInstall.exe"
+start-bitstransfer -source https://download.microsoft.com/download/8/8/0/880BCA75-79DD-466A-927D-1ABF1F5454B0/PBIDesktopSetup_x64.exe -Destination "$destination\PBIDesktopSetup_x64.exe"
+start-bitstransfer -source https://go.microsoft.com/fwlink/?linkid=2088631 -Destination "$destination\netframework_4.8_offlineinstaller.exe"
+start-bitstransfer -source http://go.microsoft.com/fwlink/?LinkID=2093437 -Destination "$destination\MicrosoftEdgeEnterpriseX64.msi"
+start-bitstransfer -source https://go.microsoft.com/fwlink/?LinkId=828603 -Destination "$destination\MMASetup-AMD64.exe"
+start-bitstransfer -source https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/PolicyAnalyzer.zip -Destination "$destination\PolicyAnalyzer.zip"
+start-bitstransfer -source https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/Windows%2010%20Version%2020H2%20and%20Windows%20Server%20Version%2020H2%20Security%20Baseline.zip  -Destination "$destination\Windows 10 Version 20H2 and Windows Server Version 20H2 Security Baseline.zip"
+start-bitstransfer -source https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/LGPO.zip -Destination "$destination\LGPO.zip"
+
+#endregion download rubbish
 #endregion
