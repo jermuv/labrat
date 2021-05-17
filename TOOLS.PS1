@@ -115,14 +115,24 @@ start-bitstransfer -source https://download.microsoft.com/download/8/8/0/880BCA7
 
 #region AD content
 {
-new-adorganizationalunit Admin
-new-adorganizationalunit Devices
-new-adorganizationalunit T1-Services
-new-adorganizationalunit UserAccounts
+    $root = (Get-ADRootDSE).rootDomainNamingContext
+    new-adorganizationalunit "Admin" -Path $root
+    new-adorganizationalunit "Devices" -Path $root
+    new-adorganizationalunit "T1-Services" -Path $root
+    new-adorganizationalunit "UserAccounts" -Path $root
 
-new-adorganizationalunit T0 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
-new-adorganizationalunit T1 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
-new-adorganizationalunit T2 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
+    #region some sample administrative OU structures
+    new-adorganizationalunit T0 -path "OU=Admin, $root"
+    new-adorganizationalunit T1 -path "OU=Admin, $root"
+    new-adorganizationalunit T2 -path "OU=Admin, $root"
+    #endregion
+
+    #region some sample servers and services
+    new-adorganizationalunit "SQL" -Path "OU=T1-Services, $root"
+    new-adorganizationalunit "FILES" -Path "OU=T1-Services, $root"
+    new-adorganizationalunit "IIS" -Path "OU=T1-Services, $root"
+
+    #endregion
 }
 # AD content
 #endregion
@@ -142,14 +152,28 @@ start-bitstransfer -source https://go.microsoft.com/fwlink/?LinkId=828603 -Desti
 start-bitstransfer -source https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/PolicyAnalyzer.zip -Destination "$destination\PolicyAnalyzer.zip"
 start-bitstransfer -source https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/Windows%2010%20Version%2020H2%20and%20Windows%20Server%20Version%2020H2%20Security%20Baseline.zip  -Destination "$destination\Windows 10 Version 20H2 and Windows Server Version 20H2 Security Baseline.zip"
 start-bitstransfer -source https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/LGPO.zip -Destination "$destination\LGPO.zip"
-
-
+start-bitstransfer -source https://download.sysinternals.com/files/BGInfo.zip -Destination "$destination\BGInfo.zip"
+$destination = "c:\temp"
 
 #endregion download rubbish
 #endregion
 
 
-#region timezine
+#region timezone
 tzutil /l
 tzutil /s "FLE Standard Time"
+#endregion
+
+#region misc dump
+get-adcomputer -filter * -Properties description, name, distinguishedname, operatingsystem, lastlogon, lastlogontimestamp, pwdlastset, whencreated, whenchanged, useraccountcontrol | export-csv -path .\dumppi.csv
+#endregion
+
+#region background info
+$destination = "C:\temp"
+if(!(Test-Path $destination))
+{
+    New-Item -ItemType Directory -Force -Path $destination | Out-Null
+}
+
+start-bitstransfer -source https://download.sysinternals.com/files/BGInfo.zip -Destination "$destination\BGInfo.zip"
 #endregion
