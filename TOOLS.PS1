@@ -123,7 +123,6 @@ new-adorganizationalunit T2 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
 }
 # AD content
 #endregion
-
 #region levyn täyttämistä
 $destination = "C:\TEMP"
 md $destination
