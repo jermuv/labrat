@@ -20,6 +20,9 @@ Connect-AzureAD -TenantId tenant id here
 Add-WindowsCapability -Online -Name Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0
 Add-WindowsCapability -Online -Name Rsat.GroupPolicy.Management.Tools~~~~0.0.1.0
 
+# visual studio download site:
+# https://my.visualstudio.com/downloads
+
 # wsus cab file:
 http://go.microsoft.com/fwlink/?linkid=74689
 
@@ -124,8 +127,12 @@ new-adorganizationalunit T2 -path "OU=Admin, DC=corp,DC=Contoso,DC=com"
 # AD content
 #endregion
 #region levyn täyttämistä
-$destination = "C:\TEMP"
-md $destination
+$destination = "C:\OAISBUudD"
+if(!(Test-Path $destination))
+{
+    New-Item -ItemType Directory -Force -Path $destination | Out-Null
+}
+
 #region download rubbish
 start-bitstransfer -source https://go.microsoft.com/fwlink/?LinkId=2116849 -Destination "$destination\GatewayInstall.exe"
 start-bitstransfer -source https://download.microsoft.com/download/8/8/0/880BCA75-79DD-466A-927D-1ABF1F5454B0/PBIDesktopSetup_x64.exe -Destination "$destination\PBIDesktopSetup_x64.exe"
@@ -136,5 +143,13 @@ start-bitstransfer -source https://download.microsoft.com/download/8/5/C/85C2543
 start-bitstransfer -source https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/Windows%2010%20Version%2020H2%20and%20Windows%20Server%20Version%2020H2%20Security%20Baseline.zip  -Destination "$destination\Windows 10 Version 20H2 and Windows Server Version 20H2 Security Baseline.zip"
 start-bitstransfer -source https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/LGPO.zip -Destination "$destination\LGPO.zip"
 
+
+
 #endregion download rubbish
+#endregion
+
+
+#region timezine
+tzutil /l
+tzutil /s "FLE Standard Time"
 #endregion
