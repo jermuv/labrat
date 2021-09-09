@@ -39,6 +39,11 @@ start-bitstransfer -source https://go.microsoft.com/fwlink/?LinkId=828603 -Desti
 ### https://docs.microsoft.com/en-us/azure/azure-monitor/agents/agent-windows
 #endregion
 
+#region aad connect
+start-bitstransfer -source https://download.microsoft.com/download/B/0/0/B00291D0-5A83-4DE7-86F5-980BC00DE05A/AzureADConnect.msi -destination "c:\temp\AzureADConnect.msi"
+#endregion
+
+
 #region vast related stuff
 
 #region laps
