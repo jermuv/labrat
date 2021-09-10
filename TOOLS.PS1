@@ -164,14 +164,41 @@ $destination = "c:\temp"
 #endregion
 
 
+#region some parameters
+$compname = "TOOLS"
+$compname = "DC01"
+$compname = "ATAGW"
+$compname = "ATACENTER"
+$compname = "SRV1"
+$compname = "CLIENT1"
+
+add-computer -domainname hessu.lab -credential hessu\administrator -restart -force
+
+#endregion parameters
+
 #region timezone
 tzutil /l
 tzutil /s "FLE Standard Time"
 #endregion
 
+#region active directory
+#region domain controller stuff (ankkalinna)
+rename-computer -newname $compname -Restart
+Add-WindowsFeature AD-Domain-Services
+Install-WindowsFeature DHCP -IncludeManagementTools
+#endregion (domain controller stuff)
+
+#region promoting dc
+install-addsforest -creatednsdelegation:$false -databasepath "c:\windows\ntds" -domainmode "WinThreshold" -domainname "hessu.lab" -domainnetbiosname "HESSU" -ForestMode "WinThreshold" -InstallDns:$true -LogPath "c:\windows\ntds" -NoRebootOnCompletion:$false -SysvolPath "c:\windows\sysvol" -force:$true
+
+
+#endregion (promoting dc) 
+
 #region misc dump
 get-adcomputer -filter * -Properties description, name, distinguishedname, operatingsystem, lastlogon, lastlogontimestamp, pwdlastset, whencreated, whenchanged, useraccountcontrol | export-csv -path .\dumppi.csv
 #endregion
+#endregion (active directory)
+
 
 #region background info
 $destination = "C:\temp"
