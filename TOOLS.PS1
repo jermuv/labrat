@@ -209,3 +209,9 @@ if(!(Test-Path $destination))
 
 start-bitstransfer -source https://download.sysinternals.com/files/BGInfo.zip -Destination "$destination\BGInfo.zip"
 #endregion
+
+
+#region preparing tools server
+mkdir c:\share
+New-SmbShare -path "c:\share" -name "share"
+#endregion
