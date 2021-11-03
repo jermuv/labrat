@@ -3,3 +3,5 @@ Clear-Host
 Write-Output $aika
 
 Write-Output "testi"
+
+echo "joojoo"
