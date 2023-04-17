@@ -1,7 +1,9 @@
 # TODO:
 - Information about the purpose of the folders :D
-- Rakenteellista buutable usb stick
-- USB stick windows natiivityökaluilla
+- update patching os image
+- windows hyper-v serverin rakennus
+-- Rakenteellista buutable usb stick
+-- USB stick windows natiivityökaluilla
 
 # PATCHING OS IMAGE (PARENT DISK)
 
