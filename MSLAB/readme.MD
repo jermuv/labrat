@@ -17,7 +17,7 @@ To update latest Windows patches for those images, proceed this way:
   - this will download latest cumulative updates
   - you potentially want to collect all MSU packages under same folder structure
   - note: this does not download EVERYTHING - you might need to download some additional msu files later
-- PatchParentDisks.ps1
+- .\PatchParentDisks.ps1
   - that will ask vhdx files (above)
   - and that will ask .msu files (patch information)
 
