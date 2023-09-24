@@ -68,7 +68,7 @@ sudo apt-get update
 ```
 
 ```
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-compose
 ```
 
 Test that everything works:
@@ -87,7 +87,7 @@ Proceed with the steps mentioned here, ish:
 ### Fetch files
 
 ```
-https://github.com/misp/misp-docker
+git clone https://github.com/misp/misp-docker
 cd misp-docker
 cp template.env .env
 vi .env
