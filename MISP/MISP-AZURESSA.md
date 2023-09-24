@@ -111,3 +111,4 @@ docker-compose up
 ### Troubleshooting
 
 - In case docker try to use url "localhost", then you have to configure .env file and rerun container
+- In case you don't get docker working properly - it's most likely because you chose ubuntu 20.x instead of 22.x!
