@@ -121,3 +121,41 @@ In case there is a need to onboard to defender for endpoint:
 **Quick and dirty**
 - download "linux server" -> local script (python)
   - copy the script to linux machine
+
+// curl -o microsoft.list https://packages.microsoft.com/config/[distro]/[version]/[channel].list
+
+*prereqs*
+
+```
+sudo apt-get install curl
+sudo apt-get install libplist-utils
+curl -o microsoft.list https://packages.microsoft.com/config/ubuntu/22.04/prod.list
+sudo mv ./microsoft.list /etc/apt/sources.list.d/microsoft-prod.list
+sudo apt-get install gpg
+curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
+sudo apt-get install apt-transport-https
+sudo apt-get update
+```
+
+*Install applications*
+
+```
+sudo apt-get install mdatp
+
+```
+
+*runnaa*
+
+```
+mdatp health --field org_id
+sudo python3 MicrosoftDefenderATPOnboardingLinuxServer.py
+mdatp health --field org_id
+```
+
+*Other*
+
+```
+mdatp health --field healthy
+
+mdatp health
+```
