@@ -28,6 +28,8 @@ Real configuration things:
 
 # Misp activities
 
+- This is assuming you have built everything as above mentioned (ie, running your docker in ubuntu instance that is in azure)
+
 ## Docker
 
 
