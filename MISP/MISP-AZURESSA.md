@@ -99,6 +99,9 @@ vi .env
 docker-compose build
 ```
 
+This build container part takes some time - ~720 seconds
+
+
 ### Run container
 
 ```
