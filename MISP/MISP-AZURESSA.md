@@ -32,6 +32,8 @@ Real configuration things:
 
 ## Docker
 
+- Assumption is that you run the environment on docker, as instructed on misp page
+
 
 ## Misp on docker
 Proceed with the steps mentioned here, ish:
