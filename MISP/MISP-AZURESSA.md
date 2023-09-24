@@ -16,16 +16,15 @@ This document supposed to contain all necessary info how I build a misp instance
 ## Virtual machine
 
 Low priority settings:
-- Name and region
+- Name
+- Region
 
 Medium:
 - availability: no infrastructure redudancy needed (on test cases)
 
-OS:
-- Ubuntu server 22.04 LTS - x64 gen2
-
-Size:
-- Standard_D2as_v5 (71,07€/month)
+Real configuration things:
+- OS: Ubuntu server 22.04 LTS - x64 gen2
+- Size: Standard_D2as_v5 (71,07€/month)
 
 # Misp activities
 
