@@ -30,7 +30,7 @@ Disk - standard SSD instead of premium SSD (local redudant storage, saving costs
 
 ## Additional azure related actions
 
-**NSG** - there is a *network security group* containing allow/deny rues for the network addresses - fix that.
+**NSG** - there is a *network security group* containing allow/deny rules for the network addresses - fix that.
 
 - Allow SSH
 - Allow HTTP
