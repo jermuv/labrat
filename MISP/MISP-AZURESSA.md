@@ -26,6 +26,16 @@ Real configuration things:
 - OS: Ubuntu server 22.04 LTS - x64 gen2
 - Size: Standard_D2as_v5 (71,07€/month)
 
+## Additional azure related actions
+
+**NSG** - there is a *network security group* containing allow/deny rues for the network addresses - fix that.
+
+- Allow SSH
+- Allow HTTP
+- Allow HTTPS
+
+Initial installation contains SSH if you enabled so, reconfigure that from "any -> any" to "myip -> any".
+
 # Misp activities
 
 - This is assuming you have built everything as above mentioned (ie, running your docker in ubuntu instance that is in azure)
