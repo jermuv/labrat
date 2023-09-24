@@ -112,3 +112,12 @@ docker-compose up
 
 - In case docker try to use url "localhost", then you have to configure .env file and rerun container
 - In case you don't get docker working properly - it's most likely because you chose ubuntu 20.x instead of 22.x!
+
+# Defender for endpoint
+
+In case there is a need to onboard to defender for endpoint:
+- official documentation: 
+
+**Quick and dirty**
+- download "linux server" -> local script (python)
+  - copy the script to linux machine
