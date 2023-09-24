@@ -77,6 +77,9 @@ sudo docker run hello-world
 ```
 
 ## Misp on docker
+
+**Once the docker itself is installed, proceed with MISP**
+
 Proceed with the steps mentioned here, ish:
 - https://github.com/misp/misp-docker
 
