@@ -1,0 +1,1 @@
+new-aduser -name "Virtanen Jermu" -Givenname "Jermu" -Surname "Virtanen" -Samaccountname "jermuv"
