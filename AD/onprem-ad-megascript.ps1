@@ -1,5 +1,6 @@
 ### Perävalotakuu, omiin legacy juttuihin tarkoitettu muistiinpano
 ### no miksi tämmöinen megaskripti? no koska mun favoriitti työkalu tulkitaan haitakkeeksi :D
+### laittelin viimeisimpiin riveihin tuon samaccountnamen mukaan ettei unohdu
 ### user search
 
 # general
@@ -59,8 +60,8 @@ get-aduser -filter * -properties useraccountcontrol, employeeid, pwdlastset, las
 
 # one more, including some random additional?
 $dumppitime = get-date -format "hhmmss"
-get-aduser -filter * -properties useraccountcontrol, employeeid, admincount, pwdlastset, lastlogontimestamp, lastlogon, whencreated, whenchanged `
-| select-object name, useraccountcontrol, employeeid, admincount, `
+get-aduser -filter * -properties useraccountcontrol, samaccountname, employeeid, admincount, pwdlastset, lastlogontimestamp, lastlogon, whencreated, whenchanged `
+| select-object samaccountname, name, useraccountcontrol, employeeid, admincount, `
 @{name="I_pwdlastset"; expression={[datetime]::fromfiletime($_.pwdlastset).tostring('yyyy-MM-dd')}}, `
 @{name="I_lastlogontimestamp"; expression={[datetime]::fromfiletime($_.lastlogontimestamp).tostring('yyyy-MM-dd')}}, `
 @{name="I_lastlogon"; expression={[datetime]::fromfiletime($_.lastlogon).tostring('yyyy-MM-dd')}}, `
@@ -72,8 +73,8 @@ get-aduser -filter * -properties useraccountcontrol, employeeid, admincount, pwd
 
 # konetilit kanssa
 $dumppitime = get-date -format "hhmmss"
-get-adcomputer -filter * -properties distinguishedname, useraccountcontrol, admincount, pwdlastset, lastlogontimestamp, lastlogon, whencreated, whenchanged `
-| select-object distinguishedname, name, useraccountcontrol, admincount, `
+get-adcomputer -filter * -properties distinguishedname, samaccountname, useraccountcontrol, admincount, pwdlastset, lastlogontimestamp, lastlogon, whencreated, whenchanged `
+| select-object distinguishedname, name, samaccountname, useraccountcontrol, admincount, `
 @{name="I_pwdlastset"; expression={[datetime]::fromfiletime($_.pwdlastset).tostring('yyyy-MM-dd')}}, `
 @{name="I_lastlogontimestamp"; expression={[datetime]::fromfiletime($_.lastlogontimestamp).tostring('yyyy-MM-dd')}}, `
 @{name="I_lastlogon"; expression={[datetime]::fromfiletime($_.lastlogon).tostring('yyyy-MM-dd')}}, `
@@ -83,8 +84,8 @@ get-adcomputer -filter * -properties distinguishedname, useraccountcontrol, admi
 
 # käyttäjät ja dn mukana
 $dumppitime = get-date -format "hhmmss"
-get-aduser -filter * -properties distinguishedname, useraccountcontrol, employeeid, admincount, pwdlastset, lastlogontimestamp, lastlogon, whencreated, whenchanged `
-| select-object distinguishedname, name, useraccountcontrol, employeeid, admincount, `
+get-aduser -filter * -properties distinguishedname, samaccountname, useraccountcontrol, employeeid, admincount, pwdlastset, lastlogontimestamp, lastlogon, whencreated, whenchanged `
+| select-object distinguishedname, name, samaccountname, useraccountcontrol, employeeid, admincount, `
 @{name="I_pwdlastset"; expression={[datetime]::fromfiletime($_.pwdlastset).tostring('yyyy-MM-dd')}}, `
 @{name="I_lastlogontimestamp"; expression={[datetime]::fromfiletime($_.lastlogontimestamp).tostring('yyyy-MM-dd')}}, `
 @{name="I_lastlogon"; expression={[datetime]::fromfiletime($_.lastlogon).tostring('yyyy-MM-dd')}}, `
