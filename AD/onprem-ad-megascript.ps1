@@ -1,6 +1,9 @@
 ### Perävalotakuu, omiin legacy juttuihin tarkoitettu muistiinpano
 ### no miksi tämmöinen megaskripti? no koska mun favoriitti työkalu tulkitaan haitakkeeksi :D
 ### laittelin viimeisimpiin riveihin tuon samaccountnamen mukaan ettei unohdu
+
+### kentältä muistutuksena: jos ajelee näitä skribuloita domain controllerilta, sieltä voi tulla hassuja vastauksia jos powershelliä ei ole elevoitu
+
 ### user search
 
 # general
